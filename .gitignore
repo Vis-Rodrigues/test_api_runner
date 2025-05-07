@@ -1,0 +1,4 @@
+relatorio.xml
+report_junit.xml
+venv/
+.pytest_cache/

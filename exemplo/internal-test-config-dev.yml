@@ -1,0 +1,57 @@
+# Variáveis para controle
+variables:
+  expected_status_code: 200  # Código padrão esperado para testes bem-sucedidos
+
+# Configuração básica da API
+base_url: "https://jsonplaceholder.typicode.com"  # URL base
+
+# Credenciais para autenticação
+credentials:
+  apikey: $APIKEY  # Nome da variável de ambiente para a API Key iniciando com $
+  user: "d51a5a34-9ec3-4108-9d66-6306c1fbd895"  # ID do usuário (não sensível)
+  pass: "021GXXDu0L"  # Senha do usuário (não sensível)
+
+# Configuração de TLS (Certificados)
+tls:
+  crt: "certs/dev.crt"  # Certificado
+  key: "certs/dev.key"  # Chave privada
+
+# Testes para validar os endpoints
+tests:
+  - path: "/posts/1"  # Endpoint específico
+    method: "GET"  # Método HTTP
+    expected_status: ${expected_status_code}  # Código esperado para sucesso
+    apikey: true  # Indica se usa x-api-key
+    auth: "basic"  # Tipo de autenticação (opcional)
+    # expected_body:  # Estrutura esperada do corpo (descomentado apenas se necessário)
+    #   id: 1
+    #   nome: "João"
+    # expected_headers:  # Estrutura esperada dos cabeçalhos
+    #   Content-Type: "application/json; charset=utf-8"
+
+  - path: "/posts"  # Endpoint para criação
+    method: "POST"  # Método HTTP
+    auth: "oauth2"  # Tipo de autenticação usado
+    headers:  # Cabeçalhos customizados
+      Content-Type: "application/json"
+    payload_file: "data/payload-1.json"  # Arquivo externo para o corpo do request
+    expected_status: 201  # Código esperado para sucesso
+    # expected_body:  # Estrutura esperada do corpo (opcional)
+    #   sucesso: true
+    # expected_headers:
+    #   X-Criado-Por: "API-Teste"
+
+  - path: "/posts"  # Outro POST para teste adicional
+    method: "POST"
+    auth: "oauth2"
+    headers:
+      Content-Type: "application/json"
+    payload:  # Corpo do request diretamente no YAML
+      id: 0
+    expected_status: 201
+    expected_body_file: "data/response.json"
+    
+    # expected_body:
+    #   sucesso: true
+    # expected_headers:
+    #   X-Criado-Por: "API-Teste"
