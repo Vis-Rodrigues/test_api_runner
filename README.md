@@ -59,22 +59,7 @@ tests:
 
 ```
 
-### 🔐 Autenticação
-
-A automação aceita as autenticações:
-
-- **Basic**: Transforma o *user* e *pass* do YAML em base64 e envia o valor no header `Authorization`.
-- **oAuth2**: Realiza a requisição do oAuth da Rede usando *user* e *pass*, envia o access_token no header `Authorization`, esse dado é armazenado em cache para não ficar gerando o token.
-- **ApiKey**: Recupera o valor da variável de ambiente e envia no header `x-api-key`.
-
-### 🧰 Recursos
-
-Essa automação disponibiliza diversos recursos para validar as APIs. As configurações são feitas no arquivo de test-config.
-
-- Parametrização via YAML
-- Headers, payloads e bodies validados
-- **Máscara de logs**: headers como Authorization e x-api-key são ocultados nos logs
-- **Payloads externos**: payload_file e expected_body_file suportados como JSON
+Exemplo de arquivo com testes: [internal-test-config-dev.yml](/exemplo/internal-test-config-dev.yml)
 
 ### Parâmetros do Arquivo YAML
 
@@ -104,7 +89,13 @@ Esta tabela descreve cada parâmetro aceito no arquivo YAML utilizado no projeto
 | `tests.expected_body`   | Estrutura esperada no corpo da resposta da API.                       | Opcional       |
 | `tests.expected_headers` | Cabeçalhos esperados na resposta da API.                             | Opcional       |
 
-Exemplo de arquivo com testes: [internal-test-config-dev.yml](/exemplo/internal-test-config-dev.yml)
+### 🔐 Autenticação
+
+A automação aceita as autenticações:
+
+- **Basic**: Transforma o *user* e *pass* do YAML em base64 e envia o valor no header `Authorization`.
+- **oAuth2**: Realiza a requisição do oAuth da Rede usando *user* e *pass*, envia o access_token no header `Authorization`, esse dado é armazenado em cache para não ficar gerando o token.
+- **ApiKey**: Recupera o valor da variável de ambiente e envia no header `x-api-key`.
 
 ## 📁 Estrutura da Automação
 
@@ -143,6 +134,6 @@ Siga os passos abaixo para implementar melhorias.
 1. Fork o repositório
 2. Crie uma branch: 
 > `git checkout -b minha-feature`
-3. Envie PRs!
+3. Envie PRs! =D
 
 ---

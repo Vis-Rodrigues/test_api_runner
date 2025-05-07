@@ -8,8 +8,8 @@ base_url: "https://jsonplaceholder.typicode.com"  # URL base
 # Credenciais para autenticação
 credentials:
   apikey: $APIKEY  # Nome da variável de ambiente para a API Key iniciando com $
-  user: "d51a5a34-9ec3-4108-9d66-6306c1fbd895"  # ID do usuário (não sensível)
-  pass: "021GXXDu0L"  # Senha do usuário (não sensível)
+  user: "client_id"  # ID do usuário (não sensível)
+  pass: "secret"  # Senha do usuário (não sensível)
 
 # Configuração de TLS (Certificados)
 tls:
